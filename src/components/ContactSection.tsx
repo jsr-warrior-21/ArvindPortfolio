@@ -45,12 +45,14 @@ export const ContactSection: React.FC = () => {
       colors: ['#000000', '#27272a', '#52525b'],
     });
 
+    const web3FormsKey = import.meta.env.VITE_WEB3FORMS_KEY || 'e0129759-4700-47b8-b2ef-37ec3eb99307';
+
     try {
       await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          access_key: 'e0129759-4700-47b8-b2ef-37ec3eb99307',
+          access_key: web3FormsKey,
           from_name: formData.name,
           replyto: formData.email,
           subject: `Portfolio Message from ${formData.name}`,
@@ -85,10 +87,10 @@ export const ContactSection: React.FC = () => {
         </p>
       </motion.div>
 
-      {/* Grid with items-stretch to guarantee 100% equal card height from the bottom */}
+      {/* Grid with items-stretch for equal card height */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
         
-        {/* Left Card: Direct Contact Info (Equal Height) */}
+        {/* Left Card: Direct Contact Info */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -151,7 +153,7 @@ export const ContactSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Social Links at Bottom */}
+          {/* Social Links */}
           <div className="pt-4 border-t border-zinc-200 flex items-center gap-3">
             <a
               href={personalDetails.socials.github}
@@ -183,7 +185,7 @@ export const ContactSection: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Right Card: Clean Form (Equal Height) */}
+        {/* Right Card: Clean Form */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
